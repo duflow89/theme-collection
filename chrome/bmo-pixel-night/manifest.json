@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "BMO Pixel Night",
+  "version": "1.0.2",
+  "description": "BMO를 모티프로 제작한 비공식 2D 픽셀아트 Chrome 팬 테마",
+  "icons": {
+    "128": "store-assets/store-icon-128.png"
+  },
+  "theme": {
+    "images": {
+      "theme_ntp_background": "images/theme_ntp_background_qhd.png"
+    },
+    "colors": {
+      "frame": [8, 18, 37],
+      "frame_inactive": [18, 31, 52],
+      "toolbar": [21, 52, 63],
+      "tab_text": [244, 232, 193],
+      "tab_background_text": [165, 210, 204],
+      "bookmark_text": [244, 232, 193],
+      "ntp_background": [5, 14, 31],
+      "ntp_text": [244, 232, 193],
+      "ntp_link": [98, 198, 181],
+      "button_background": [98, 198, 181]
+    },
+    "tints": {
+      "buttons": [0.47, 0.55, 0.72]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom center",
+      "ntp_background_repeat": "no-repeat",
+      "ntp_logo_alternate": 1
+    }
+  }
+}

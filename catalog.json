@@ -1,0 +1,11 @@
+{
+  "themes": [
+    {
+      "app": "chrome",
+      "id": "bmo-pixel-night",
+      "name": "BMO Pixel Night",
+      "path": "chrome/bmo-pixel-night",
+      "version": "1.0.2"
+    }
+  ]
+}
