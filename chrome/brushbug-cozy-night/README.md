@@ -15,17 +15,17 @@
 
 ## Preview
 
-![Brushbug Cozy Night New Tab background](images/theme_ntp_background_qhd.png)
+![Brushbug Cozy Night New Tab background](images/theme_ntp_background_fhd.png)
 
-<p align="center"><sub>The exact 2560×1440 runtime background referenced by the theme manifest</sub></p>
+<p align="center"><sub>The exact 1920×1080 runtime background referenced by the theme manifest</sub></p>
 
 ## At a glance
 
 | Detail | Value |
 | --- | --- |
-| Version | `1.0.0` |
+| Version | `1.0.1` |
 | Package | Chrome theme · Manifest V3 |
-| Background | `2560×1440` RGB PNG |
+| Background | `1920×1080` RGB PNG |
 | Placement | Bottom center · no repeat |
 | Palette | Midnight navy frames · warm amber accents |
 | Access | No scripts, permissions, tracking, or data collection |
@@ -66,7 +66,7 @@ python3 tools/chrome/validate_theme.py chrome/brushbug-cozy-night
 ```bash
 python3 tools/chrome/build_theme.py \
   chrome/brushbug-cozy-night \
-  --output dist/chrome/brushbug-cozy-night-v1.0.0.zip
+  --output dist/chrome/brushbug-cozy-night-v1.0.1.zip
 ```
 
 > [!NOTE]

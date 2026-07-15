@@ -20,9 +20,9 @@ Deep navy frames, mint accents, and a cozy pixel-art night scene
 
 [Install locally](bmo-pixel-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/bmo-pixel-night/fabbpacoihgbjmpbkpjikpciifepnbfj)
 
-### [Brushbug Cozy Night](brushbug-cozy-night/README.md) · `v1.0.0`
+### [Brushbug Cozy Night](brushbug-cozy-night/README.md) · `v1.0.1`
 
-[![Brushbug Cozy Night New Tab background](brushbug-cozy-night/images/theme_ntp_background_qhd.png)](brushbug-cozy-night/README.md)
+[![Brushbug Cozy Night New Tab background](brushbug-cozy-night/images/theme_ntp_background_fhd.png)](brushbug-cozy-night/README.md)
 
 Midnight browser chrome, warm amber accents, and a quiet atelier after dark
 

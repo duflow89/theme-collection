@@ -65,7 +65,7 @@ If the unpacked package remains listed on `chrome://extensions`, select **Remove
 
 ## Background behavior
 
-- Canvas: `2560×1440` RGB PNG
+- Canvas: `1920×1080` RGB PNG
 - Alignment: bottom center
 - Repetition: none
 - Sizing: the manifest provides alignment and repeat controls, but no background-sizing property such as CSS `cover` or `contain`
