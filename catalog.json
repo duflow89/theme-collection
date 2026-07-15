@@ -6,6 +6,13 @@
       "name": "BMO Pixel Night",
       "path": "chrome/bmo-pixel-night",
       "version": "1.0.3"
+    },
+    {
+      "app": "chrome",
+      "id": "brushbug-cozy-night",
+      "name": "Brushbug Cozy Night",
+      "path": "chrome/brushbug-cozy-night",
+      "version": "1.0.0"
     }
   ]
 }

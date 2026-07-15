@@ -4,6 +4,7 @@
 .venv/
 __pycache__/
 *.pyc
+Cached Theme.pak
 node_modules/
 dist/
 *.crx

@@ -41,6 +41,7 @@ theme-collection/
 | App | Theme | Version | Path |
 | --- | --- | --- | --- |
 | Chrome | BMO Pixel Night | 1.0.3 | `chrome/bmo-pixel-night` |
+| Chrome | Brushbug Cozy Night | 1.0.0 | `chrome/brushbug-cozy-night` |
 
 ## Validate a Chrome theme
 
