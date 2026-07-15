@@ -9,3 +9,13 @@ dist/
 *.crx
 *.pem
 *.vsix
+.env
+.env.*
+!.env.example
+!.env.*.example
+.codex/*
+!.codex/config.toml
+.gemini/
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/agent-memory-local/

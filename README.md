@@ -13,11 +13,26 @@ theme-collection/
 ├── vscode/
 │   └── <theme-id>/
 ├── tools/
+│   ├── agents/
 │   ├── chrome/
 │   └── image-processing/
+├── .agents/
+│   ├── agents/
+│   ├── rules/
+│   ├── skills/
+│   └── workflows/
+├── .claude/
+│   ├── agents/
+│   ├── skills/
+│   └── settings.json
+├── docs/
+│   └── agents/
 ├── templates/
 │   ├── chrome-theme/
 │   └── vscode-theme/
+├── AGENTS.md
+├── CLAUDE.md
+├── GEMINI.md
 └── dist/
 ```
 
@@ -50,6 +65,18 @@ python3 tools/chrome/build_theme.py \
 ```
 
 배포 파일은 `dist/`에 생성되며 Git 커밋 대상에서 제외
+
+## AI 에이전트 구성
+
+Codex, Claude Code, Google Antigravity가 같은 저장소 규칙과 테마 작업 절차를 사용하도록 구성
+
+```bash
+python3 tools/agents/validate_setup.py
+```
+
+공통 계약은 `AGENTS.md`, 공통 테마 스킬은 `.agents/skills/theme-workflow/SKILL.md`에서 관리
+
+도구별 자동 로딩 경로와 동기화 방식은 [멀티 에이전트 구성](docs/agents/README.md) 참고
 
 ## 버전 및 태그 규칙
 
