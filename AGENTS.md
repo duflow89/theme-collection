@@ -38,6 +38,9 @@ These instructions apply to the entire repository. Platform or theme-specific do
 ## Chrome themes
 
 - Read `chrome/README.md` and the target theme README before editing
+- Start new Chrome theme packages from `templates/chrome-theme/`
+- Keep a theme-specific `INSTALL.md` beside each Chrome manifest and link it from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
+- Embed the exact image referenced by `theme.images.theme_ntp_background` as a standalone Markdown image with alt text in the form `<Theme Name> New Tab background`
 - Validate with `python3 tools/chrome/validate_theme.py chrome/<theme-id>`
 - Build only when requested, using `python3 tools/chrome/build_theme.py chrome/<theme-id> --output dist/chrome/<theme-id>-v<version>.zip`
 - A Chrome distribution ZIP contains only `manifest.json` and resources referenced by the manifest

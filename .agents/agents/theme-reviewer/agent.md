@@ -15,6 +15,7 @@ This agent has a review-only operating contract. Claude Code enforces it with `p
 - Identify the affected app and theme from the request and current diff
 - Read the app and theme documentation and inspect relevant package metadata
 - Run the applicable repository validator
+- For Chrome, verify that the README uses the required standalone Markdown background preview, exact alt-text form, and Markdown link to a complete theme-specific `INSTALL.md`
 - Verify referenced asset paths and dimensions, version synchronization, changelog and catalog entries, listing assets, package contents, and rights notes
 - Confirm that distribution archives, caches, secrets, and signing keys are not tracked
 - Return `PASS` or `FAIL` with command evidence and specific file references

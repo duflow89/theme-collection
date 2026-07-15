@@ -9,7 +9,7 @@ Use this workflow for one independent theme under `<app>/<theme-id>/`.
 
 ## 1. Establish scope
 
-1. Read `AGENTS.md`, `README.md`, `RIGHTS.md`, the app README, and the target theme README
+1. Read `AGENTS.md`, `README.md`, `RIGHTS.md`, the app README, and the target theme README; for Chrome, also read the target `INSTALL.md`
 2. Inspect `git status --short --branch` and preserve unrelated changes
 3. Identify the exact app, theme ID, requested output, current version, and whether the user requested packaging or publishing
 4. Do not create matching variants for other apps unless the user explicitly asks for them
@@ -22,6 +22,9 @@ Use this workflow for one independent theme under `<app>/<theme-id>/`.
 4. Keep marketplace icons, screenshots, promotional images, and listing copy in their dedicated store or listing areas
 5. Use relative package paths that remain inside the theme directory
 6. Preserve pixel-art edges with nearest-neighbor scaling unless the theme documentation specifies another method
+7. For Chrome, start new packages from `templates/chrome-theme/`
+8. For Chrome, embed the exact `theme.images.theme_ntp_background` runtime image as a standalone Markdown image with alt text in the form `<Theme Name> New Tab background`
+9. For Chrome, keep a theme-specific `INSTALL.md` beside the manifest and link it from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
 
 ## 3. Synchronize release metadata
 
@@ -43,6 +46,8 @@ For Chrome:
 python3 tools/chrome/validate_theme.py chrome/<theme-id>
 ```
 
+The Chrome validator must pass the manifest, runtime assets, README background preview, README installation link, and installation-guide checks.
+
 When packaging was requested:
 
 ```bash
@@ -63,7 +68,7 @@ git status --short
 
 ## 5. Review and handoff
 
-- Inspect the final diff and package contents
+- Inspect the final diff, documentation links and previews, and package contents
 - Report commands and results, changed version if any, and generated artifact paths
 - Keep rights review, store submission, publication, remote pushes, and human approval as explicit separate gates
 - Do not commit or publish unless the user requested it

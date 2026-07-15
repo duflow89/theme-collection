@@ -15,6 +15,17 @@ PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 VERSION_PATTERN = re.compile(r"^[0-9]+(?:\.[0-9]+){0,3}$")
 ALIGNMENT_VALUES = {"top", "bottom", "left", "right", "center"}
 REPEAT_VALUES = {"no-repeat", "repeat", "repeat-x", "repeat-y"}
+HTML_COMMENT_PATTERN = re.compile(r"<!--.*?-->", re.DOTALL)
+HTML_CODE_BLOCK_PATTERN = re.compile(
+    r"<(?:pre|code)\b[^>]*>.*?</(?:pre|code)\s*>",
+    re.IGNORECASE | re.DOTALL,
+)
+INDENTED_CODE_LINE_PATTERN = re.compile(r"^(?: {4}|\t).*$", re.MULTILINE)
+TEMPLATE_PLACEHOLDER_PATTERN = re.compile(
+    r"(?:<|&lt;)(?:theme name|theme-id|version|width|height|alignment|repeat|"
+    r"manifest-background-file|one-line english description)(?:>|&gt;)",
+    re.IGNORECASE,
+)
 
 
 def png_metadata(path: Path) -> tuple[int, int, int, int]:
@@ -33,6 +44,132 @@ def safe_resource_path(theme_dir: Path, resource: str) -> Path:
     if posix_path.is_absolute() or ".." in posix_path.parts:
         raise ValueError("resource path must stay inside the theme directory")
     return theme_dir.joinpath(*posix_path.parts)
+
+
+def strip_fenced_code_blocks(content: str) -> str:
+    visible_lines: list[str] = []
+    fence_character: str | None = None
+    fence_length = 0
+
+    for line in content.splitlines(keepends=True):
+        line_content = line.rstrip("\r\n")
+        stripped = line_content.lstrip(" ")
+        indentation = len(line_content) - len(stripped)
+
+        if fence_character is not None:
+            closing_pattern = rf"{re.escape(fence_character)}{{{fence_length},}}[ \t]*"
+            if indentation <= 3 and re.fullmatch(closing_pattern, stripped):
+                fence_character = None
+                fence_length = 0
+            continue
+
+        opening = re.match(r"(?P<fence>`{3,}|~{3,})", stripped)
+        if indentation <= 3 and opening is not None:
+            fence = opening.group("fence")
+            remainder = stripped[len(fence) :]
+            if fence[0] != "`" or "`" not in remainder:
+                fence_character = fence[0]
+                fence_length = len(fence)
+                continue
+
+        visible_lines.append(line)
+
+    return "".join(visible_lines)
+
+
+def visible_markdown(content: str) -> str:
+    without_html_code = HTML_CODE_BLOCK_PATTERN.sub(" ", content)
+    without_comments = HTML_COMMENT_PATTERN.sub(" ", without_html_code)
+    without_code_blocks = strip_fenced_code_blocks(without_comments)
+    return INDENTED_CODE_LINE_PATTERN.sub("", without_code_blocks)
+
+
+def validate_documentation(
+    theme_dir: Path,
+    background: str | None,
+    theme_name: str | None,
+) -> list[str]:
+    errors: list[str] = []
+    readme_path = theme_dir / "README.md"
+    install_path = theme_dir / "INSTALL.md"
+
+    try:
+        readme = readme_path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        errors.append("README.md is missing")
+        readme = None
+    except UnicodeDecodeError:
+        errors.append("README.md must be valid UTF-8")
+        readme = None
+
+    try:
+        install = install_path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        errors.append("INSTALL.md is missing")
+        install = None
+    except UnicodeDecodeError:
+        errors.append("INSTALL.md must be valid UTF-8")
+        install = None
+
+    if readme is not None:
+        visible_readme = visible_markdown(readme)
+        rendered_lines = {line.strip() for line in visible_readme.splitlines()}
+        if background is not None and theme_name is not None:
+            expected_preview = f"![{theme_name} New Tab background]({background})"
+            if expected_preview not in rendered_lines:
+                errors.append(
+                    "README.md must include this standalone Markdown preview: "
+                    f"{expected_preview}"
+                )
+
+        expected_install_link = "[Install locally](INSTALL.md)"
+        if expected_install_link not in rendered_lines:
+            errors.append(
+                "README.md must include this standalone Markdown link: "
+                f"{expected_install_link}"
+            )
+
+        if TEMPLATE_PLACEHOLDER_PATTERN.search(visible_readme):
+            errors.append("README.md contains an unresolved template placeholder")
+
+    if install is not None:
+        visible_install = visible_markdown(install)
+        required_install_text = (
+            "chrome://extensions",
+            "Developer mode",
+            "Load unpacked",
+            "manifest.json",
+            "ZIP",
+            "Reset to default",
+        )
+        for required_text in required_install_text:
+            if required_text not in visible_install:
+                errors.append(f"INSTALL.md must include {required_text!r}")
+
+        required_install_headings = (
+            "## Install from this repository",
+            "## Install from a release ZIP",
+            "## Remove the theme",
+            "## Troubleshooting",
+        )
+        install_lines = {line.strip() for line in visible_install.splitlines()}
+        if theme_name is not None:
+            required_title = f"# Install {theme_name} Locally"
+            if required_title not in install_lines:
+                errors.append(f"INSTALL.md must include title {required_title!r}")
+
+        required_theme_path = f"chrome/{theme_dir.name}"
+        if required_theme_path not in visible_install:
+            errors.append(f"INSTALL.md must include {required_theme_path!r}")
+
+        for required_heading in required_install_headings:
+            if required_heading not in install_lines:
+                errors.append(f"INSTALL.md must include heading {required_heading!r}")
+
+        if TEMPLATE_PLACEHOLDER_PATTERN.search(visible_install):
+            errors.append("INSTALL.md contains an unresolved template placeholder")
+
+    return errors
 
 
 def validate_theme(theme_dir: Path) -> tuple[list[str], dict[str, Any], dict[str, tuple[int, int, int, int]]]:
@@ -101,9 +238,19 @@ def validate_theme(theme_dir: Path) -> tuple[list[str], dict[str, Any], dict[str
         return errors, manifest, image_info
 
     images = theme.get("images", {})
+    background: str | None = None
     if not isinstance(images, dict):
         errors.append("theme.images must be an object")
     else:
+        background_value = images.get("theme_ntp_background")
+        if not isinstance(background_value, str) or not background_value:
+            errors.append("theme.images.theme_ntp_background is required")
+        else:
+            background = background_value
+            background_parts = PurePosixPath(background).parts
+            if not background_parts or background_parts[0] != "images":
+                errors.append("theme.images.theme_ntp_background must be under images/")
+
         for key, resource in images.items():
             if not isinstance(resource, str):
                 errors.append(f"theme.images.{key} must be a string path")
@@ -150,6 +297,14 @@ def validate_theme(theme_dir: Path) -> tuple[list[str], dict[str, Any], dict[str
         repeat = properties.get("ntp_background_repeat")
         if repeat is not None and repeat not in REPEAT_VALUES:
             errors.append("ntp_background_repeat contains an unsupported value")
+
+    errors.extend(
+        validate_documentation(
+            theme_dir,
+            background,
+            name if isinstance(name, str) else None,
+        )
+    )
 
     return errors, manifest, image_info
 

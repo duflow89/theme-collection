@@ -1,90 +1,97 @@
+<div align="center">
+
 # Theme Collection
 
-A collection for managing independent themes for apps such as Chrome and VS Code in one repository
+**Independent visual themes, thoughtfully packaged for each app**
 
-Themes are organized independently under each app rather than converted into matching variants across multiple apps
+An app-first collection where every theme keeps its artwork, metadata, documentation, version, and release history together
 
-## Structure
+[Explore Chrome themes](chrome/README.md) · [Author a theme](templates/chrome-theme/README.md) · [Agent setup](docs/agents/README.md) · [Rights](RIGHTS.md)
+
+</div>
+
+---
+
+## Theme gallery
+
+| Preview | Theme |
+| :---: | --- |
+| <img src="chrome/bmo-pixel-night/images/theme_ntp_background_fhd.png" alt="BMO Pixel Night background" width="360"> | **[BMO Pixel Night](chrome/bmo-pixel-night/README.md)**<br>`Chrome` · `v1.0.4`<br>An unofficial 2D pixel-art fan theme with deep navy frames and mint accents<br>[Install locally](chrome/bmo-pixel-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/bmo-pixel-night/fabbpacoihgbjmpbkpjikpciifepnbfj) |
+| <img src="chrome/brushbug-cozy-night/images/theme_ntp_background_qhd.png" alt="Brushbug Cozy Night background" width="360"> | **[Brushbug Cozy Night](chrome/brushbug-cozy-night/README.md)**<br>`Chrome` · `v1.0.0`<br>A dark atelier scene with midnight frames and warm amber accents<br>[Install locally](chrome/brushbug-cozy-night/INSTALL.md) |
+
+## Collection model
+
+Themes are organized by app and released independently. A theme never needs a matching variant for another platform
 
 ```text
 theme-collection/
 ├── chrome/
 │   └── <theme-id>/
+│       ├── README.md
+│       ├── INSTALL.md
+│       ├── manifest.json
+│       ├── images/
+│       ├── assets/source/
+│       ├── store-assets/
+│       ├── listing/
+│       └── CHANGELOG.md
 ├── vscode/
 │   └── <theme-id>/
-├── tools/
-│   ├── agents/
-│   ├── chrome/
-│   └── image-processing/
-├── .agents/
-│   ├── agents/
-│   ├── rules/
-│   ├── skills/
-│   └── workflows/
-├── .claude/
-│   ├── agents/
-│   ├── skills/
-│   └── settings.json
-├── docs/
-│   └── agents/
 ├── templates/
-│   ├── chrome-theme/
-│   └── vscode-theme/
-├── AGENTS.md
-├── CLAUDE.md
-├── GEMINI.md
-└── dist/
+├── tools/
+└── docs/agents/
 ```
 
-## Current themes
+| Principle | What it means |
+| --- | --- |
+| App-first | Each package follows its platform's native format |
+| Independent releases | Versions and changelogs advance per theme |
+| Clear asset boundaries | Source artwork, runtime files, and marketplace assets stay separate |
+| Honest distribution | Rights review, publication, and approval remain explicit human gates |
 
-| App | Theme | Version | Path |
-| --- | --- | --- | --- |
-| Chrome | BMO Pixel Night | 1.0.3 | `chrome/bmo-pixel-night` |
-| Chrome | Brushbug Cozy Night | 1.0.0 | `chrome/brushbug-cozy-night` |
+## Developer workflow
 
-## Validate a Chrome theme
+Start from the relevant app template, keep the runtime package minimal, and validate before packaging
+
+### Validate a Chrome theme
 
 ```bash
 python3 tools/chrome/validate_theme.py chrome/bmo-pixel-night
 ```
 
-Validation and ZIP packaging use only the Python standard library
+The validator checks manifest data, referenced assets, image metadata, and the required README preview and installation guide
 
-Development dependencies are required only for the image resizing tool
+### Package a Chrome theme
+
+```bash
+python3 tools/chrome/build_theme.py \
+  chrome/bmo-pixel-night \
+  --output dist/chrome/bmo-pixel-night-v1.0.4.zip
+```
+
+Distribution archives contain only `manifest.json` and resources referenced by the manifest. Generated files stay under `dist/` and are excluded from Git
+
+Validation and packaging use only the Python standard library. The image resizing tool has separate development dependencies
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
 ```
 
-## Package a Chrome theme
+## Agent-aware repository
 
-```bash
-python3 tools/chrome/build_theme.py \
-  chrome/bmo-pixel-night \
-  --output dist/chrome/bmo-pixel-night-v1.0.3.zip
-```
-
-Distribution files are generated under `dist/` and excluded from Git
-
-## AI agent setup
-
-Codex, Claude Code, and Google Antigravity share the same repository rules and theme workflow
+Codex, Claude Code, and Google Antigravity share the repository contract in `AGENTS.md` and the theme workflow in `.agents/skills/theme-workflow/SKILL.md`
 
 ```bash
 python3 tools/agents/validate_setup.py
 ```
 
-The shared contract lives in `AGENTS.md`, and the shared theme skill lives in `.agents/skills/theme-workflow/SKILL.md`
+See [Multi-agent setup](docs/agents/README.md) for discovery paths, compatibility adapters, and safety boundaries
 
-See [Multi-agent setup](docs/agents/README.md) for tool-specific discovery paths and synchronization details
+## Releases and rights
 
-## Version and tag conventions
-
-- Manage each theme's version and changelog independently inside its theme directory
+- Version every theme independently
 - Use `<app>-<theme-id>-v<version>` for release tags
-- Example: `chrome-bmo-pixel-night-v1.0.3`
+- Example: `chrome-bmo-pixel-night-v1.0.4`
+- Review [RIGHTS.md](RIGHTS.md) before any public release or redistribution
 
-## Rights and distribution
-
-Code and artwork may have different rights restrictions, so review [RIGHTS.md](RIGHTS.md) before any public release
+Artwork and repository tooling may have different rights restrictions. Public availability does not imply an open-source license, copyright clearance, sponsorship, or endorsement

@@ -27,6 +27,8 @@ REQUIRED_FILES = (
     Path(".claude/agents/theme-reviewer.md"),
     Path(".claude/settings.json"),
     Path("docs/agents/README.md"),
+    Path("templates/chrome-theme/README.md"),
+    Path("templates/chrome-theme/INSTALL.md"),
 )
 
 ADAPTER_IMPORTS = {

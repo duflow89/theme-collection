@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+- Reduced the New Tab background from `2560×1440` to `1920×1080` for a more balanced subject scale on common desktop viewports
+- Preserved crisp pixel-art edges with nearest-neighbor resampling
+- Kept the existing bottom-center alignment and no-repeat behavior
+
 ## 1.0.3
 
 - Replaced the Korean manifest description with English copy

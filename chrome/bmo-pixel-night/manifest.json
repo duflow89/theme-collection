@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
   "name": "BMO Pixel Night",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An unofficial 2D pixel-art Chrome fan theme inspired by BMO",
   "icons": {
     "128": "store-assets/store-icon-128.png"
   },
   "theme": {
     "images": {
-      "theme_ntp_background": "images/theme_ntp_background_qhd.png"
+      "theme_ntp_background": "images/theme_ntp_background_fhd.png"
     },
     "colors": {
       "frame": [8, 18, 37],

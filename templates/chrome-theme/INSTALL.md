@@ -1,6 +1,6 @@
 <div align="center">
 
-# Install Brushbug Cozy Night Locally
+# Install &lt;Theme Name&gt; Locally
 
 Load the theme as an unpacked Chrome extension for development, testing, or personal use
 
@@ -25,7 +25,7 @@ Load the theme as an unpacked Chrome extension for development, testing, or pers
 1. Enter `chrome://extensions` in the Chrome address bar
 2. Enable **Developer mode**
 3. Select **Load unpacked**
-4. Choose the `chrome/brushbug-cozy-night` directory
+4. Choose the `chrome/<theme-id>` directory
 5. Open a New Tab and confirm that the theme is active
 
 ## Install from a release ZIP
@@ -65,9 +65,9 @@ If the unpacked package remains listed on `chrome://extensions`, select **Remove
 
 ## Background behavior
 
-- Canvas: `2560×1440` RGB PNG
-- Alignment: bottom center
-- Repetition: none
+- Canvas: `<width>×<height>` RGB PNG
+- Alignment: `<alignment>`
+- Repetition: `<repeat>`
 - Sizing: the manifest provides alignment and repeat controls, but no background-sizing property such as CSS `cover` or `contain`
 
 ## Official Chrome documentation
