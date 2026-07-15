@@ -1,71 +1,71 @@
-# 멀티 에이전트 구성
+# Multi-agent setup
 
-이 저장소는 공통 지침과 Agent Skills 표준을 중심으로 Codex, Claude Code, Google Antigravity를 함께 지원
+This repository supports Codex, Claude Code, and Google Antigravity through shared instructions and the Agent Skills standard
 
-## 지원 구조
+## Supported structure
 
-| 도구 | 자동 로딩 지침 | 스킬 | 추가 구성 |
+| Tool | Auto-loaded instructions | Skill | Additional configuration |
 | --- | --- | --- | --- |
-| Codex | `AGENTS.md` | `.agents/skills/theme-workflow/SKILL.md` | 저장소 지침의 상위·하위 범위 규칙 사용 |
+| Codex | `AGENTS.md` | `.agents/skills/theme-workflow/SKILL.md` | Uses the repository instruction hierarchy |
 | Claude Code | `CLAUDE.md` → `AGENTS.md` | `.claude/skills/theme-workflow/SKILL.md` | `.claude/settings.json`, `.claude/agents/theme-reviewer.md` |
-| Antigravity | CLI의 `AGENTS.md`, IDE의 `.agents/rules/repository.md` → `AGENTS.md` | `.agents/skills/theme-workflow/SKILL.md` | `GEMINI.md` 라우팅, 워크플로와 사용자 정의 에이전트 |
+| Antigravity | CLI: `AGENTS.md`; IDE: `.agents/rules/repository.md` → `AGENTS.md` | `.agents/skills/theme-workflow/SKILL.md` | `GEMINI.md` routing, workflows, and custom agents |
 
-## 단일 원본 원칙
+## Single source of truth
 
-- 저장소 공통 계약은 루트 `AGENTS.md`가 단일 원본
-- `CLAUDE.md`와 `.agents/rules/repository.md`는 공통 계약을 가져오는 얇은 어댑터
-- `GEMINI.md`는 CLI와 IDE 경로를 안내하며 중복 컨텍스트 방지를 위해 공통 계약을 다시 import하지 않음
-- 공통 스킬 원본은 `.agents/skills/theme-workflow/SKILL.md`
-- Claude Code 호환 복사본은 `.claude/skills/theme-workflow/SKILL.md`
-- 현재 설치된 Claude Code가 `.agents/skills`를 프로젝트 스킬로 자동 탐색하지 않으므로 복사본 유지
-- 심볼릭 링크 대신 저장소 검증기로 두 스킬 파일의 동일성을 보장해 운영체제와 Claude Code 버전 차이를 회피
+- The root `AGENTS.md` file is the single source of truth for the shared repository contract
+- `CLAUDE.md` and `.agents/rules/repository.md` are thin adapters that import the shared contract
+- `GEMINI.md` routes CLI and IDE entry points without importing the shared contract again, avoiding duplicate context
+- `.agents/skills/theme-workflow/SKILL.md` is the canonical shared skill
+- `.claude/skills/theme-workflow/SKILL.md` is the Claude Code compatibility copy
+- The compatibility copy is required because the currently installed Claude Code does not automatically discover project skills from `.agents/skills`
+- The repository validator enforces byte-for-byte equality between the two skill files instead of using a symbolic link, avoiding operating system and Claude Code version differences
 
-## 제공 기능
+## Provided capabilities
 
-- `theme-workflow`: 독립 테마 생성, 수정, 버전 동기화, 검증, 패키징, 릴리스 준비 절차
-- `theme-reviewer`: 배포 전 검토 전용 에이전트. Claude Code에서는 `permissionMode: plan`으로 쓰기를 차단
-- `/validate-theme`: Antigravity에서 호출하는 읽기 전용 검증 워크플로
-- `.claude/settings.json`: 원격 Git 변경 재확인과 민감 경로에 대한 Claude `Read` 도구 차단 규칙
+- `theme-workflow`: creates, modifies, version-syncs, validates, packages, and prepares independent themes for release
+- `theme-reviewer`: review-only agent for pre-release checks; Claude Code uses `permissionMode: plan` to block writes
+- `/validate-theme`: read-only validation workflow invoked by Antigravity
+- `.claude/settings.json`: confirmation rules for remote Git changes and Claude `Read` restrictions for sensitive paths
 
-특정 모델 ID는 저장소에 고정하지 않음. Claude 검토 에이전트도 `model: inherit`를 사용해 실행 환경의 선택을 그대로 상속
+The repository does not pin a specific model ID. The Claude reviewer also uses `model: inherit` to preserve the execution environment's selection
 
-Antigravity 사용자 정의 에이전트의 검토 전용 문구는 운영 계약이며 파일 자체가 프로젝트 권한을 강제하지는 않음. 실제 쓰기 차단이 필요한 검토는 Antigravity의 Planning 또는 Strict 권한 모드에서 실행 필요. 프로젝트 내부 쓰기는 기본 허용될 수 있으므로 프롬프트 지침만을 보안 경계로 간주하지 않음
+The review-only wording in the Antigravity custom agent is an operating contract; the file itself does not enforce project permissions. Run reviews that require write prevention in Antigravity's Planning or Strict permission mode. Project writes may otherwise be allowed by default, so prompt instructions alone are not a security boundary
 
-Claude의 `Read(...)` deny도 Claude 파일 읽기 도구에 대한 규칙이며 모든 셸 명령을 차단하는 샌드박스는 아님. 민감 파일은 `.gitignore`로 Git 추적도 별도 차단
+Claude `Read(...)` deny rules apply to Claude's file-reading tool and are not a sandbox for every shell command. `.gitignore` separately prevents sensitive files from being tracked by Git
 
-## 검증
+## Validation
 
-에이전트 파일을 수정한 뒤 저장소 루트에서 실행
+Run from the repository root after modifying agent files
 
 ```bash
 python3 tools/agents/validate_setup.py
 ```
 
-검증 항목
+Validation checks
 
-- 모든 모델 진입 파일과 프로젝트 설정 존재 여부
-- 어댑터의 `AGENTS.md` import와 실제 대상 경로
-- 공통 스킬과 Claude 복사본의 바이트 단위 일치 여부
-- 스킬과 사용자 정의 에이전트의 필수 frontmatter 값
-- 두 검토 에이전트의 공통 본문과 Claude `plan` 권한
-- Claude 프로젝트 설정 JSON 형식과 주요 안전 규칙
-- `.gitignore`의 민감 파일 및 로컬 에이전트 상태 보호
+- Presence of every model entry file and project configuration file
+- Adapter imports of `AGENTS.md` and their resolved target paths
+- Byte-for-byte equality between the shared skill and the Claude compatibility copy
+- Required frontmatter values for skills and custom agents
+- Shared reviewer body content and Claude `plan` permissions
+- Claude project settings JSON and key safety rules
+- `.gitignore` protections for sensitive files and local agent state
 
-설치된 CLI까지 확인하려면 smoke 검증 실행
+Run the smoke validation to inspect installed CLIs as well
 
 ```bash
 python3 tools/agents/validate_setup.py --smoke
 ```
 
-Smoke 검증은 설치된 Codex·Claude·Gemini CLI 버전을 확인하고, Gemini CLI가 저장소의 `theme-workflow` 스킬을 실제 발견하는지 검사
+Smoke validation checks installed Codex, Claude, and Gemini CLI versions and verifies that Gemini CLI discovers the repository's `theme-workflow` skill
 
-## 로컬 전용 설정
+## Local-only configuration
 
-다음 파일은 개인 설정이므로 커밋하지 않음
+The following files contain personal configuration and must not be committed
 
 - `CLAUDE.local.md`
 - `.claude/settings.local.json`
 - `.claude/agent-memory-local/`
-- `.codex/` 또는 `.gemini/` 아래의 사용자 인증 정보와 로컬 상태
+- Credentials and local state under `.codex/` or `.gemini/`
 
-저장소에는 API 키, OAuth 토큰, 개인 MCP 인증, 모델별 개인 환경설정을 넣지 않음
+Do not store API keys, OAuth tokens, personal MCP credentials, or model-specific personal settings in the repository

@@ -10,6 +10,12 @@ These instructions apply to the entire repository. Platform or theme-specific do
 - Treat every theme as its own package with independent metadata, assets, version, changelog, and release history
 - Use lowercase kebab-case for app and theme directory names
 
+## Language policy
+
+- Keep all repository files and committed content in English, including source code, comments, documentation, metadata, changelogs, marketplace copy, filenames, and text embedded in images
+- Do not add translated variants or non-English localized content unless the user explicitly changes this repository policy
+- Communicate with the user in Korean unless the user explicitly requests another language
+
 ## Before changing files
 
 1. Run `git status --short --branch` and preserve unrelated user changes
@@ -48,6 +54,7 @@ These instructions apply to the entire repository. Platform or theme-specific do
 
 - Run the narrowest relevant validator after each material change
 - After changing agent configuration, run `python3 tools/agents/validate_setup.py`
+- Before handoff, verify that tracked text and image assets contain no non-English localized copy
 - Before handoff, inspect `git diff --check`, `git status --short`, and the final diff
 - Report the exact commands run and whether they passed
 - Keep implementation completion separate from human rights review, marketplace submission, publication, or approval

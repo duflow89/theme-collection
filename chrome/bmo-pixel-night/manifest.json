@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "BMO Pixel Night",
-  "version": "1.0.2",
-  "description": "BMO를 모티프로 제작한 비공식 2D 픽셀아트 Chrome 팬 테마",
+  "version": "1.0.3",
+  "description": "An unofficial 2D pixel-art Chrome fan theme inspired by BMO",
   "icons": {
     "128": "store-assets/store-icon-128.png"
   },

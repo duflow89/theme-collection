@@ -1,10 +1,10 @@
 # Theme Collection
 
-Chrome, VS Code 등 앱별 독립 테마를 한 저장소에서 관리하기 위한 컬렉션
+A collection for managing independent themes for apps such as Chrome and VS Code in one repository
 
-같은 테마를 여러 앱으로 변환하는 구조가 아니라 앱 아래에 서로 독립적인 테마를 배치하는 방식
+Themes are organized independently under each app rather than converted into matching variants across multiple apps
 
-## 구조
+## Structure
 
 ```text
 theme-collection/
@@ -36,54 +36,54 @@ theme-collection/
 └── dist/
 ```
 
-## 현재 테마
+## Current themes
 
-| 앱 | 테마 | 버전 | 경로 |
+| App | Theme | Version | Path |
 | --- | --- | --- | --- |
-| Chrome | BMO Pixel Night | 1.0.2 | `chrome/bmo-pixel-night` |
+| Chrome | BMO Pixel Night | 1.0.3 | `chrome/bmo-pixel-night` |
 
-## Chrome 테마 검증
+## Validate a Chrome theme
 
 ```bash
 python3 tools/chrome/validate_theme.py chrome/bmo-pixel-night
 ```
 
-검증과 ZIP 패키징은 Python 표준 라이브러리만 사용
+Validation and ZIP packaging use only the Python standard library
 
-이미지 리사이즈 도구를 사용할 때만 개발 의존성 설치 필요
+Development dependencies are required only for the image resizing tool
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
 ```
 
-## Chrome 테마 패키징
+## Package a Chrome theme
 
 ```bash
 python3 tools/chrome/build_theme.py \
   chrome/bmo-pixel-night \
-  --output dist/chrome/bmo-pixel-night-v1.0.2.zip
+  --output dist/chrome/bmo-pixel-night-v1.0.3.zip
 ```
 
-배포 파일은 `dist/`에 생성되며 Git 커밋 대상에서 제외
+Distribution files are generated under `dist/` and excluded from Git
 
-## AI 에이전트 구성
+## AI agent setup
 
-Codex, Claude Code, Google Antigravity가 같은 저장소 규칙과 테마 작업 절차를 사용하도록 구성
+Codex, Claude Code, and Google Antigravity share the same repository rules and theme workflow
 
 ```bash
 python3 tools/agents/validate_setup.py
 ```
 
-공통 계약은 `AGENTS.md`, 공통 테마 스킬은 `.agents/skills/theme-workflow/SKILL.md`에서 관리
+The shared contract lives in `AGENTS.md`, and the shared theme skill lives in `.agents/skills/theme-workflow/SKILL.md`
 
-도구별 자동 로딩 경로와 동기화 방식은 [멀티 에이전트 구성](docs/agents/README.md) 참고
+See [Multi-agent setup](docs/agents/README.md) for tool-specific discovery paths and synchronization details
 
-## 버전 및 태그 규칙
+## Version and tag conventions
 
-- 각 테마의 버전과 변경 이력은 해당 테마 폴더에서 독립 관리
-- 릴리스 태그 형식은 `<app>-<theme-id>-v<version>` 사용
-- 예시: `chrome-bmo-pixel-night-v1.0.2`
+- Manage each theme's version and changelog independently inside its theme directory
+- Use `<app>-<theme-id>-v<version>` for release tags
+- Example: `chrome-bmo-pixel-night-v1.0.3`
 
-## 권리 및 배포
+## Rights and distribution
 
-코드와 이미지의 권리 상태가 다를 수 있으므로 공개 전 [RIGHTS.md](RIGHTS.md) 확인 필요
+Code and artwork may have different rights restrictions, so review [RIGHTS.md](RIGHTS.md) before any public release
