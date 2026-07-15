@@ -1,43 +1,43 @@
 # BMO Pixel Night
 
-BMO에서 영감을 받아 제작한 비공식 2D 픽셀아트 Chrome 팬 테마
+An unofficial 2D pixel-art Chrome fan theme inspired by BMO
 
-## 현재 버전
+## Current version
 
-`1.0.2`
+`1.0.3`
 
-## 주요 설정
+## Key settings
 
-- 새 탭 배경 `2560×1440` RGB PNG
-- 하단 중앙 정렬
-- 배경 반복 없음
-- 네이비 프레임과 BMO 민트 포인트 색상
-- 매니페스트에 선언된 `128×128` 스토어 아이콘
-- 스크립트, 권한, 데이터 수집 없음
+- `2560×1440` RGB PNG New Tab background
+- Bottom-center alignment
+- No background repetition
+- Navy frame colors with BMO-inspired mint accents
+- `128×128` store icon declared in the manifest
+- No scripts, permissions, or data collection
 
-## 폴더
+## Directories
 
-- `assets/source`: 최초 생성 이미지
-- `images`: Chrome 테마가 실제로 참조하는 이미지
-- `store-assets`: 웹 스토어 아이콘, 캡처화면, 프로모션 타일
-- `listing`: 웹 스토어 등록 문구
+- `assets/source`: original generated artwork
+- `images`: runtime images referenced by the Chrome theme
+- `store-assets`: Chrome Web Store icon, screenshot, and promotional tiles
+- `listing`: Chrome Web Store listing copy
 
-## 검증
+## Validation
 
-저장소 루트에서 실행
+Run from the repository root
 
 ```bash
 python3 tools/chrome/validate_theme.py chrome/bmo-pixel-night
 ```
 
-## 패키징
+## Packaging
 
 ```bash
 python3 tools/chrome/build_theme.py \
   chrome/bmo-pixel-night \
-  --output dist/chrome/bmo-pixel-night-v1.0.2.zip
+  --output dist/chrome/bmo-pixel-night-v1.0.3.zip
 ```
 
-## 표시 제약
+## Display limitations
 
-Chrome 웹 스토어 테마 배경은 브라우저에서 `size: initial`로 표시되므로 창 크기와 확대 수준에 따라 보이는 범위가 달라질 수 있음
+Chrome displays theme backgrounds with `size: initial`, so the visible area can vary with the browser window size and zoom level

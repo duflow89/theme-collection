@@ -1,8 +1,8 @@
 # VS Code themes
 
-향후 VS Code용 독립 테마를 추가하는 위치
+This directory is reserved for future independent VS Code themes
 
-권장 구조
+Recommended structure
 
 ```text
 <theme-id>/
@@ -13,4 +13,4 @@
 └── README.md
 ```
 
-Chrome 테마와 색상 또는 버전을 공유한다는 전제 없이 독립적으로 관리
+Manage each theme independently without assuming shared colors or versions with a Chrome theme

@@ -1,8 +1,8 @@
 # Chrome themes
 
-각 하위 폴더는 독립적으로 설치하고 배포할 수 있는 하나의 Chrome 테마
+Each child directory contains one Chrome theme that can be installed and distributed independently
 
-필수 파일과 권장 폴더
+Required files and recommended directories
 
 ```text
 <theme-id>/
@@ -15,4 +15,4 @@
 └── README.md
 ```
 
-`manifest.json`과 참조된 `images/` 파일만 웹 스토어 배포 ZIP에 포함
+The Chrome Web Store distribution ZIP contains only `manifest.json` and resources referenced by the manifest

@@ -1,16 +1,21 @@
 # Changelog
 
+## 1.0.3
+
+- Replaced the Korean manifest description with English copy
+- Standardized theme documentation and marketplace assets in English
+
 ## 1.0.2
 
-- 새 탭 배경을 `2560×1440`으로 확대
-- 새 탭 배경을 하단 중앙 정렬로 변경
-- 웹 스토어 업로드용 패키지 구조 정리
+- Enlarged the New Tab background to `2560×1440`
+- Aligned the New Tab background to the bottom center
+- Refined the package structure for Chrome Web Store uploads
 
 ## 1.0.1
 
-- 새 탭 배경을 화면 가운데 정렬로 변경
+- Centered the New Tab background
 
 ## 1.0.0
 
-- 최초 Chrome 테마 제작
-- 픽셀아트 배경과 네이비·민트 브라우저 색상 추가
+- Created the initial Chrome theme
+- Added a pixel-art background with navy and mint browser colors

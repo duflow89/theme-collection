@@ -1,5 +1,5 @@
 # Chrome theme template
 
-새 Chrome 테마를 추가할 때 `chrome/<theme-id>` 구조와 기존 `bmo-pixel-night` 테마를 기준으로 시작
+When adding a new Chrome theme, start with the `chrome/<theme-id>` structure and the existing `bmo-pixel-night` theme as references
 
-추가 후 `tools/chrome/validate_theme.py`로 검증하고 `tools/chrome/build_theme.py`로 배포 ZIP 생성
+After adding the theme, validate it with `tools/chrome/validate_theme.py` and create its distribution ZIP with `tools/chrome/build_theme.py`
