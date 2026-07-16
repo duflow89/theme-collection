@@ -1,17 +1,14 @@
-# Brushbug Cozy Night
+Transform Chrome's New Tab page into a quiet, candlelit atelier after dark
 
-Settle into a quiet magical atelier with Brushbug Cozy Night, an unofficial fan-made Chrome theme inspired by the brushbug from *Witch Hat Atelier*
-
-The New Tab artwork pairs deep midnight blues with warm amber lamplight, placing a soft ivory brushbug at the center of a peaceful desk scene. The upper part of the background stays dark and restrained so browser controls, search, and shortcuts remain easy to see
+Brushbug Cozy Night pairs a moonlit atelier with soft champagne tabs, a warm ivory toolbar, and amber lamplight around an ivory brushbug. The dark New Tab artwork keeps search and shortcuts easy to see while the light browser frame gives the theme a gentle, welcoming finish
 
 Features:
 
-- A cozy illustrated New Tab background set in a nighttime atelier
-- Deep navy tabs and a charcoal toolbar
-- Warm cream text and subtle amber accents
-- Clear contrast for browser controls
-- No scripts, tracking, advertising, or data collection
+- A `1920×1080` illustrated New Tab background set in a nighttime atelier
+- Soft champagne tabs, a warm ivory toolbar and address bar, and clear charcoal controls
+- Bottom-center artwork placement designed for common desktop window sizes
+- No scripts, permissions, tracking, advertising, or data collection
 
-Brushbug Cozy Night is designed for anyone who enjoys quiet fantasy spaces, gentle nighttime lighting, and relaxing browser customization
+This theme changes Chrome's appearance only. It does not read browsing activity or add interactive features. You can return to Chrome's default appearance at any time from the Appearance settings
 
 This is an unofficial fan-made theme. It is not affiliated with, sponsored by, or endorsed by the original creators or rights holders. All related character names and intellectual property belong to their respective owners

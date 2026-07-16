@@ -17,7 +17,7 @@ An app-first collection where every theme keeps its artwork, metadata, documenta
 | Preview | Theme |
 | :---: | --- |
 | <img src="chrome/bmo-pixel-night/images/theme_ntp_background_fhd.png" alt="BMO Pixel Night background" width="360"> | **[BMO Pixel Night](chrome/bmo-pixel-night/README.md)**<br>`Chrome` · `v1.0.4`<br>An unofficial 2D pixel-art fan theme with deep navy frames and mint accents<br>[Install locally](chrome/bmo-pixel-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/bmo-pixel-night/fabbpacoihgbjmpbkpjikpciifepnbfj) |
-| <img src="chrome/brushbug-cozy-night/images/theme_ntp_background_fhd.png" alt="Brushbug Cozy Night background" width="360"> | **[Brushbug Cozy Night](chrome/brushbug-cozy-night/README.md)**<br>`Chrome` · `v1.0.1`<br>A dark atelier scene with midnight frames and warm amber accents<br>[Install locally](chrome/brushbug-cozy-night/INSTALL.md) |
+| <img src="chrome/brushbug-cozy-night/images/theme_ntp_background_fhd.png" alt="Brushbug Cozy Night background" width="360"> | **[Brushbug Cozy Night](chrome/brushbug-cozy-night/README.md)**<br>`Chrome` · `v1.0.2`<br>A moonlit atelier with champagne frames, an ivory toolbar, and warm amber accents<br>[Install locally](chrome/brushbug-cozy-night/INSTALL.md) |
 
 ## Collection model
 
@@ -59,7 +59,7 @@ Start from the relevant app template, keep the runtime package minimal, and vali
 python3 tools/chrome/validate_theme.py chrome/bmo-pixel-night
 ```
 
-The validator checks manifest data, referenced assets, image metadata, and the required README preview and installation guide
+The validator checks manifest data, referenced assets, image metadata, the required README preview and installation guide, and the complete Chrome Web Store listing set
 
 ### Package a Chrome theme
 

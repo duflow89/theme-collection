@@ -20,11 +20,11 @@ Deep navy frames, mint accents, and a cozy pixel-art night scene
 
 [Install locally](bmo-pixel-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/bmo-pixel-night/fabbpacoihgbjmpbkpjikpciifepnbfj)
 
-### [Brushbug Cozy Night](brushbug-cozy-night/README.md) · `v1.0.1`
+### [Brushbug Cozy Night](brushbug-cozy-night/README.md) · `v1.0.2`
 
 [![Brushbug Cozy Night New Tab background](brushbug-cozy-night/images/theme_ntp_background_fhd.png)](brushbug-cozy-night/README.md)
 
-Midnight browser chrome, warm amber accents, and a quiet atelier after dark
+Champagne browser chrome, a warm ivory toolbar, and a quiet atelier after dark
 
 [Install locally](brushbug-cozy-night/INSTALL.md)
 
@@ -67,6 +67,19 @@ Every current and future Chrome theme must meet the same documentation contract
 - Keep all committed documentation and embedded image text in English
 
 The Chrome validator enforces the preview and installation requirements
+
+## Chrome Web Store listing standard
+
+Every theme keeps a complete English dashboard field sheet and listing copy under `listing/`. The field sheet records the title, summary, detailed description, category, and language selection
+
+Every theme also includes these upload-ready images under `store-assets/`
+
+- `store-icon-128.png` — `128×128` PNG
+- `screenshot-1280x800.png` — full-bleed `1280×800` RGB PNG showing the installed theme
+- `promo-small-440x280.png` — full-bleed `440×280` RGB PNG without text
+- `promo-marquee-1400x560.png` — full-bleed `1400×560` RGB PNG without text
+
+The validator checks the listing files and image dimensions. Marketplace assets remain outside the distribution ZIP unless the manifest explicitly references them
 
 ## Create or update a theme
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate a Chrome theme directory without third-party dependencies."""
+"""Validate a Chrome theme package and store listing without dependencies."""
 
 from __future__ import annotations
 
@@ -15,6 +15,18 @@ PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 VERSION_PATTERN = re.compile(r"^[0-9]+(?:\.[0-9]+){0,3}$")
 ALIGNMENT_VALUES = {"top", "bottom", "left", "right", "center"}
 REPEAT_VALUES = {"no-repeat", "repeat", "repeat-x", "repeat-y"}
+STORE_ASSET_SPECS = {
+    "store-assets/store-icon-128.png": (128, 128),
+    "store-assets/screenshot-1280x800.png": (1280, 800),
+    "store-assets/promo-small-440x280.png": (440, 280),
+    "store-assets/promo-marquee-1400x560.png": (1400, 560),
+}
+STORE_SCREENSHOT_DIMENSIONS = {(1280, 800), (640, 400)}
+STORE_LISTING_FILES = (
+    "listing/summary-en.txt",
+    "listing/description-en.md",
+    "listing/store-listing-en.md",
+)
 HTML_COMMENT_PATTERN = re.compile(r"<!--.*?-->", re.DOTALL)
 HTML_CODE_BLOCK_PATTERN = re.compile(
     r"<(?:pre|code)\b[^>]*>.*?</(?:pre|code)\s*>",
@@ -23,7 +35,8 @@ HTML_CODE_BLOCK_PATTERN = re.compile(
 INDENTED_CODE_LINE_PATTERN = re.compile(r"^(?: {4}|\t).*$", re.MULTILINE)
 TEMPLATE_PLACEHOLDER_PATTERN = re.compile(
     r"(?:<|&lt;)(?:theme name|theme-id|version|width|height|alignment|repeat|"
-    r"manifest-background-file|one-line english description)(?:>|&gt;)",
+    r"manifest-background-file|one-line english description|category|language)"
+    r"(?:>|&gt;)",
     re.IGNORECASE,
 )
 
@@ -172,6 +185,105 @@ def validate_documentation(
     return errors
 
 
+def validate_store_listing(
+    theme_dir: Path,
+    manifest: dict[str, Any],
+    image_info: dict[str, tuple[int, int, int, int]],
+) -> list[str]:
+    errors: list[str] = []
+    listing_content: dict[str, str] = {}
+
+    for resource in STORE_LISTING_FILES:
+        path = theme_dir / resource
+        try:
+            listing_content[resource] = path.read_text(encoding="utf-8")
+        except FileNotFoundError:
+            errors.append(f"{resource} is missing")
+        except UnicodeDecodeError:
+            errors.append(f"{resource} must be valid UTF-8")
+
+    summary_resource = "listing/summary-en.txt"
+    if summary_resource in listing_content:
+        summary = listing_content[summary_resource].strip()
+        if not summary:
+            errors.append(f"{summary_resource} must not be empty")
+        if len(summary.splitlines()) != 1:
+            errors.append(f"{summary_resource} must contain one plain-text line")
+        if len(summary) > 132:
+            errors.append(f"{summary_resource} must be 132 characters or fewer")
+
+        manifest_description = manifest.get("description")
+        if isinstance(manifest_description, str) and summary != manifest_description:
+            errors.append(
+                f"{summary_resource} must match the manifest description exactly"
+            )
+
+    description_resource = "listing/description-en.md"
+    if description_resource in listing_content:
+        description = visible_markdown(listing_content[description_resource]).strip()
+        if not description:
+            errors.append(f"{description_resource} must not be empty")
+        if TEMPLATE_PLACEHOLDER_PATTERN.search(description):
+            errors.append(f"{description_resource} contains a template placeholder")
+
+    field_sheet_resource = "listing/store-listing-en.md"
+    if field_sheet_resource in listing_content:
+        field_sheet = visible_markdown(listing_content[field_sheet_resource])
+        required_fields = ("Title", "Summary", "Description", "Category", "Language")
+        for field in required_fields:
+            if field not in field_sheet:
+                errors.append(f"{field_sheet_resource} must include {field!r}")
+        if "English" not in field_sheet:
+            errors.append(f"{field_sheet_resource} must select English")
+        if TEMPLATE_PLACEHOLDER_PATTERN.search(field_sheet):
+            errors.append(f"{field_sheet_resource} contains a template placeholder")
+
+    for resource, expected_dimensions in STORE_ASSET_SPECS.items():
+        path = theme_dir / resource
+        if not path.is_file():
+            errors.append(f"{resource} is missing")
+            continue
+
+        try:
+            metadata = png_metadata(path)
+        except ValueError as error:
+            errors.append(f"{resource}: {error}")
+            continue
+
+        image_info[resource] = metadata
+        if metadata[:2] != expected_dimensions:
+            errors.append(
+                f"{resource}: expected {expected_dimensions[0]}x"
+                f"{expected_dimensions[1]}, found {metadata[0]}x{metadata[1]}"
+            )
+        if resource != "store-assets/store-icon-128.png" and metadata[3] != 2:
+            errors.append(f"{resource}: store artwork must be RGB PNG without alpha")
+
+    store_assets_dir = theme_dir / "store-assets"
+    screenshots = sorted(store_assets_dir.glob("screenshot-*.png"))
+    if len(screenshots) > 5:
+        errors.append("store-assets may contain at most five PNG screenshots")
+
+    for screenshot_path in screenshots:
+        resource = screenshot_path.relative_to(theme_dir).as_posix()
+        try:
+            metadata = png_metadata(screenshot_path)
+        except ValueError as error:
+            errors.append(f"{resource}: {error}")
+            continue
+
+        image_info[resource] = metadata
+        if metadata[:2] not in STORE_SCREENSHOT_DIMENSIONS:
+            errors.append(
+                f"{resource}: screenshots must be 1280x800 or 640x400, "
+                f"found {metadata[0]}x{metadata[1]}"
+            )
+        if metadata[3] != 2:
+            errors.append(f"{resource}: screenshots must be RGB PNG without alpha")
+
+    return errors
+
+
 def validate_theme(theme_dir: Path) -> tuple[list[str], dict[str, Any], dict[str, tuple[int, int, int, int]]]:
     errors: list[str] = []
     image_info: dict[str, tuple[int, int, int, int]] = {}
@@ -305,6 +417,7 @@ def validate_theme(theme_dir: Path) -> tuple[list[str], dict[str, Any], dict[str
             name if isinstance(name, str) else None,
         )
     )
+    errors.extend(validate_store_listing(theme_dir, manifest, image_info))
 
     return errors, manifest, image_info
 
