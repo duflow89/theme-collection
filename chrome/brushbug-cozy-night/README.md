@@ -23,19 +23,30 @@
 
 | Detail | Value |
 | --- | --- |
-| Version | `1.0.1` |
+| Version | `1.0.2` |
 | Package | Chrome theme · Manifest V3 |
 | Background | `1920×1080` RGB PNG |
 | Placement | Bottom center · no repeat |
-| Palette | Midnight navy frames · warm amber accents |
+| Palette | Champagne frames · ivory toolbar · warm charcoal controls |
 | Access | No scripts, permissions, tracking, or data collection |
 
 ## Experience
 
 - A candlelit atelier scene composed for Chrome's New Tab page
-- Midnight browser frames that recede into the artwork
-- Warm cream text and amber controls inspired by lamplight
+- Soft champagne tabs that echo the lantern glow
+- A warm ivory toolbar and address bar with clear charcoal controls
 - A `128×128` icon included in the package manifest
+
+## Chrome Web Store assets
+
+![Brushbug Cozy Night Chrome Web Store screenshot](store-assets/screenshot-1280x800.png)
+
+| Asset | Preview |
+| --- | --- |
+| Small promo tile · `440×280` | ![Brushbug Cozy Night small promotional tile](store-assets/promo-small-440x280.png) |
+| Marquee promo tile · `1400×560` | ![Brushbug Cozy Night marquee promotional tile](store-assets/promo-marquee-1400x560.png) |
+
+See the [dashboard field sheet](listing/store-listing-en.md) for the category, language, listing copy, and upload map
 
 ## Installation
 
@@ -49,9 +60,9 @@ The local guide covers loading the theme from this repository or an extracted re
 | --- | --- |
 | `manifest.json` | Theme metadata, colors, and runtime asset references |
 | `images/` | Runtime background loaded by Chrome |
-| `assets/source/` | Original generated artwork and source crops |
-| `store-assets/` | Chrome Web Store icon |
-| `listing/` | Chrome Web Store summary and description |
+| `assets/source/` | Original generated artwork, marketplace source images, and generation notes |
+| `store-assets/` | Chrome Web Store icon, screenshot, and promotional images |
+| `listing/` | Chrome Web Store field sheet, summary, and detailed description |
 | `INSTALL.md` | Local installation, removal, and troubleshooting |
 | `CHANGELOG.md` | Theme-specific release history |
 
@@ -66,7 +77,7 @@ python3 tools/chrome/validate_theme.py chrome/brushbug-cozy-night
 ```bash
 python3 tools/chrome/build_theme.py \
   chrome/brushbug-cozy-night \
-  --output dist/chrome/brushbug-cozy-night-v1.0.1.zip
+  --output dist/chrome/brushbug-cozy-night-v1.0.2.zip
 ```
 
 > [!NOTE]

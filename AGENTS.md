@@ -39,6 +39,8 @@ These instructions apply to the entire repository. Platform or theme-specific do
 
 - Read `chrome/README.md` and the target theme README before editing
 - Start new Chrome theme packages from `templates/chrome-theme/`
+- Create a complete English Chrome Web Store listing with title, summary, detailed description, category, and language guidance under `listing/`
+- Include the store-ready image set under `store-assets/`: a `128×128` icon, at least one `1280×800` screenshot, a `440×280` small promotional tile, and a `1400×560` marquee image
 - Keep a theme-specific `INSTALL.md` beside each Chrome manifest and link it from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
 - Embed the exact image referenced by `theme.images.theme_ntp_background` as a standalone Markdown image with alt text in the form `<Theme Name> New Tab background`
 - Validate with `python3 tools/chrome/validate_theme.py chrome/<theme-id>`

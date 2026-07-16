@@ -7,9 +7,10 @@ Validate one theme without changing repository files.
 3. Inspect `git status --short --branch` and the relevant diff
 4. Run the app-specific validator
 5. For Chrome, confirm that the README uses the required standalone Markdown background preview and Markdown installation link
-6. For Chrome, run `python3 tools/chrome/validate_theme.py chrome/<theme-id>`
-7. Run `python3 tools/agents/validate_setup.py` and `git diff --check`
-8. If a distribution archive already exists, inspect its file list without rebuilding it
-9. Return `PASS` or `FAIL`, the commands run, exact errors, and remaining human release gates
+6. For Chrome, confirm that the listing field sheet, summary, detailed description, store icon, screenshot, small promotional tile, and marquee image are present
+7. For Chrome, run `python3 tools/chrome/validate_theme.py chrome/<theme-id>`
+8. Run `python3 tools/agents/validate_setup.py` and `git diff --check`
+9. If a distribution archive already exists, inspect its file list without rebuilding it
+10. Return `PASS` or `FAIL`, the commands run, exact errors, and remaining human release gates
 
 Do not edit, package, commit, push, tag, publish, or upload anything during this workflow.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Brushbug Cozy Night",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An unofficial dark and cozy Chrome fan theme inspired by the brushbug from Witch Hat Atelier",
   "icons": {
     "128": "store-assets/store-icon-128.png"
@@ -11,19 +11,22 @@
       "theme_ntp_background": "images/theme_ntp_background_fhd.png"
     },
     "colors": {
-      "frame": [7, 13, 25],
-      "frame_inactive": [18, 27, 42],
-      "toolbar": [24, 32, 43],
-      "tab_text": [246, 228, 190],
-      "tab_background_text": [182, 170, 146],
-      "bookmark_text": [246, 228, 190],
+      "frame": [243, 223, 175],
+      "frame_inactive": [230, 210, 166],
+      "background_tab": [240, 217, 163],
+      "background_tab_inactive": [226, 209, 171],
+      "toolbar": [247, 243, 233],
+      "toolbar_text": [50, 46, 39],
+      "toolbar_button_icon": [92, 81, 66],
+      "omnibox_background": [255, 253, 247],
+      "omnibox_text": [50, 46, 39],
+      "tab_text": [50, 46, 39],
+      "tab_background_text": [68, 59, 48],
+      "bookmark_text": [92, 81, 66],
       "ntp_background": [7, 14, 25],
       "ntp_text": [244, 224, 185],
       "ntp_link": [219, 167, 92],
-      "button_background": [188, 126, 54]
-    },
-    "tints": {
-      "buttons": [0.09, 0.35, 0.72]
+      "button_background": [216, 185, 122]
     },
     "properties": {
       "ntp_background_alignment": "bottom center",
