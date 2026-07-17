@@ -28,6 +28,8 @@ The Brushbug Cozy Night artwork is an unofficial fan-made work inspired by the b
 
 It is not affiliated with, sponsored by, or endorsed by the original creators or rights holders. Related character names and intellectual property belong to their respective owners
 
+Published releases of the packaged theme are available through the [Chrome Web Store](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb)
+
 Do not apply a general open-source license to the character artwork or redistribute it outside the intended theme release without confirming the necessary rights
 
 ## Sensitive files

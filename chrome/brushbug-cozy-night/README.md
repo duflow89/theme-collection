@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="INSTALL.md">Install locally</a> ·
+  <a href="https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb">Chrome Web Store</a> ·
   <a href="../README.md">All Chrome themes</a>
 </p>
 
@@ -52,7 +53,9 @@ See the [dashboard field sheet](listing/store-listing-en.md) for the category, l
 
 [Install locally](INSTALL.md)
 
-The local guide covers loading the theme from this repository or an extracted release ZIP
+Choose the published [Chrome Web Store release](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb) for normal updates. The local guide covers loading the theme from this repository or an extracted release ZIP
+
+The Store listing version may lag behind the repository version until an update is reviewed and published
 
 ## Package map
 
@@ -86,5 +89,7 @@ python3 tools/chrome/build_theme.py \
 ## Distribution and rights
 
 This is an unofficial fan-made theme. It is not affiliated with, sponsored by, or endorsed by the original creators or rights holders. Related character names and intellectual property belong to their respective owners
+
+Chrome Web Store publication and public repository availability are separate distribution surfaces. Neither represents copyright clearance, affiliation, or an open-source license for third-party character elements
 
 Review the repository [rights and distribution notice](../../RIGHTS.md) before redistributing the artwork or applying a repository-wide license

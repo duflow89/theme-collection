@@ -26,7 +26,7 @@ Deep navy frames, mint accents, and a cozy pixel-art night scene
 
 Champagne browser chrome, a warm ivory toolbar, and a quiet atelier after dark
 
-[Install locally](brushbug-cozy-night/INSTALL.md)
+[Install locally](brushbug-cozy-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb)
 
 ## Install a theme locally
 
