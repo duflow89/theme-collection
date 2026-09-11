@@ -28,6 +28,14 @@ Champagne browser chrome, a warm ivory toolbar, and a quiet atelier after dark
 
 [Install locally](brushbug-cozy-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb)
 
+### [Mandu Blue Sky](mandu-blue-sky/README.md) · `v1.0.0`
+
+[![Mandu Blue Sky New Tab background](mandu-blue-sky/images/theme_ntp_background_fhd.png)](mandu-blue-sky/README.md)
+
+A golden pixel-art dumpling with red glasses, rolling green hills, and a bright blue sky
+
+[Install locally](mandu-blue-sky/INSTALL.md)
+
 ## Install a theme locally
 
 Each theme includes its own `INSTALL.md` with source and extracted-ZIP instructions. Local themes use Chrome's **Developer mode** and **Load unpacked** workflow

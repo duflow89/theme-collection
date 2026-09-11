@@ -1,0 +1,101 @@
+{
+  "manifest_version": 3,
+  "name": "Mandu Blue Sky",
+  "version": "1.0.0",
+  "description": "A golden pixel-art dumpling with red glasses, blue skies, green hills, and a cloud-white toolbar",
+  "icons": {
+    "128": "store-assets/store-icon-128.png"
+  },
+  "theme": {
+    "images": {
+      "theme_ntp_background": "images/theme_ntp_background_fhd.png"
+    },
+    "colors": {
+      "frame": [
+        116,
+        181,
+        235
+      ],
+      "frame_inactive": [
+        169,
+        204,
+        232
+      ],
+      "background_tab": [
+        149,
+        199,
+        239
+      ],
+      "background_tab_inactive": [
+        185,
+        214,
+        237
+      ],
+      "toolbar": [
+        244,
+        249,
+        253
+      ],
+      "toolbar_text": [
+        25,
+        49,
+        71
+      ],
+      "toolbar_button_icon": [
+        44,
+        80,
+        110
+      ],
+      "omnibox_background": [
+        224,
+        237,
+        248
+      ],
+      "omnibox_text": [
+        25,
+        49,
+        71
+      ],
+      "tab_text": [
+        25,
+        49,
+        71
+      ],
+      "tab_background_text": [
+        24,
+        50,
+        72
+      ],
+      "bookmark_text": [
+        44,
+        80,
+        110
+      ],
+      "ntp_background": [
+        117,
+        181,
+        232
+      ],
+      "ntp_text": [
+        255,
+        255,
+        255
+      ],
+      "ntp_link": [
+        255,
+        255,
+        255
+      ],
+      "button_background": [
+        195,
+        222,
+        244
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "top right",
+      "ntp_background_repeat": "no-repeat",
+      "ntp_logo_alternate": 1
+    }
+  }
+}

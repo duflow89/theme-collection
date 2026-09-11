@@ -18,6 +18,7 @@ An app-first collection where every theme keeps its artwork, metadata, documenta
 | :---: | --- |
 | <img src="chrome/bmo-pixel-night/images/theme_ntp_background_fhd.png" alt="BMO Pixel Night background" width="360"> | **[BMO Pixel Night](chrome/bmo-pixel-night/README.md)**<br>`Chrome` · `v1.0.4`<br>An unofficial 2D pixel-art fan theme with deep navy frames and mint accents<br>[Install locally](chrome/bmo-pixel-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/bmo-pixel-night/fabbpacoihgbjmpbkpjikpciifepnbfj) |
 | <img src="chrome/brushbug-cozy-night/images/theme_ntp_background_fhd.png" alt="Brushbug Cozy Night background" width="360"> | **[Brushbug Cozy Night](chrome/brushbug-cozy-night/README.md)**<br>`Chrome` · `v1.0.2`<br>A moonlit atelier with champagne frames, an ivory toolbar, and warm amber accents<br>[Install locally](chrome/brushbug-cozy-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb) |
+| <img src="chrome/mandu-blue-sky/images/theme_ntp_background_fhd.png" alt="Mandu Blue Sky background" width="360"> | **[Mandu Blue Sky](chrome/mandu-blue-sky/README.md)**<br>`Chrome` · `v1.0.0`<br>A golden pixel-art dumpling above green hills, with sky-blue frames and a cloud-white toolbar<br>[Install locally](chrome/mandu-blue-sky/INSTALL.md) |
 
 ## Collection model
 
