@@ -1,6 +1,6 @@
 <div align="center">
 
-# Install Mandu Blue Sky Locally
+# Install 안경만두의 파란 하늘 Locally
 
 Load the theme as an unpacked Chrome extension for development, testing, or personal use
 

@@ -14,7 +14,7 @@
 
 1. Create `chrome/<theme-id>/` using lowercase kebab-case
 2. Add the package structure below
-3. Replace every placeholder with theme-specific English content
+3. Replace every placeholder with theme-specific English content unless `AGENTS.md` records a user-approved language exception
 4. Keep source, runtime, and marketplace assets in their designated directories
 5. Validate before packaging
 
@@ -76,6 +76,8 @@ Use this minimum pattern and expand it to match the current theme READMEs
 The README preview path must exactly match the manifest background path. The validator rejects source-artwork or marketplace-image substitutes
 
 ## Required Chrome Web Store listing
+
+The filenames and copy below use the default English contract. For a user-approved Korean theme, add `listing/metadata.json` containing `{"language": "ko"}`, use the corresponding `-ko` filenames, and select Korean in the dashboard field sheet
 
 Every theme should be ready for the Chrome Web Store dashboard before it is treated as complete
 

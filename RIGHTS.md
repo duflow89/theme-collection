@@ -32,7 +32,7 @@ Published releases of the packaged theme are available through the [Chrome Web S
 
 Do not apply a general open-source license to the character artwork or redistribute it outside the intended theme release without confirming the necessary rights
 
-## Mandu Blue Sky artwork
+## Mandu Blue Sky artwork (안경만두의 파란 하늘)
 
 Mandu Blue Sky uses original artwork by **Ankyung Mandoo** (`@ankyungmandoo_`), as identified by the user
 

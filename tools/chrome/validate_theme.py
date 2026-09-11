@@ -22,11 +22,7 @@ STORE_ASSET_SPECS = {
     "store-assets/promo-marquee-1400x560.png": (1400, 560),
 }
 STORE_SCREENSHOT_DIMENSIONS = {(1280, 800), (640, 400)}
-STORE_LISTING_FILES = (
-    "listing/summary-en.txt",
-    "listing/description-en.md",
-    "listing/store-listing-en.md",
-)
+STORE_LANGUAGES = {"en": "English", "ko": "Korean"}
 HTML_COMMENT_PATTERN = re.compile(r"<!--.*?-->", re.DOTALL)
 HTML_CODE_BLOCK_PATTERN = re.compile(
     r"<(?:pre|code)\b[^>]*>.*?</(?:pre|code)\s*>",
@@ -193,7 +189,24 @@ def validate_store_listing(
     errors: list[str] = []
     listing_content: dict[str, str] = {}
 
-    for resource in STORE_LISTING_FILES:
+    language = "en"
+    metadata_path = theme_dir / "listing/metadata.json"
+    if metadata_path.exists():
+        try:
+            metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError) as error:
+            errors.append(f"listing/metadata.json is invalid: {error}")
+        else:
+            value = metadata.get("language") if isinstance(metadata, dict) else None
+            if not isinstance(value, str) or value not in STORE_LANGUAGES:
+                errors.append("listing/metadata.json language must be 'en' or 'ko'")
+            else:
+                language = value
+
+    summary_resource = f"listing/summary-{language}.txt"
+    description_resource = f"listing/description-{language}.md"
+    field_sheet_resource = f"listing/store-listing-{language}.md"
+    for resource in (summary_resource, description_resource, field_sheet_resource):
         path = theme_dir / resource
         try:
             listing_content[resource] = path.read_text(encoding="utf-8")
@@ -202,7 +215,6 @@ def validate_store_listing(
         except UnicodeDecodeError:
             errors.append(f"{resource} must be valid UTF-8")
 
-    summary_resource = "listing/summary-en.txt"
     if summary_resource in listing_content:
         summary = listing_content[summary_resource].strip()
         if not summary:
@@ -218,7 +230,6 @@ def validate_store_listing(
                 f"{summary_resource} must match the manifest description exactly"
             )
 
-    description_resource = "listing/description-en.md"
     if description_resource in listing_content:
         description = visible_markdown(listing_content[description_resource]).strip()
         if not description:
@@ -226,15 +237,15 @@ def validate_store_listing(
         if TEMPLATE_PLACEHOLDER_PATTERN.search(description):
             errors.append(f"{description_resource} contains a template placeholder")
 
-    field_sheet_resource = "listing/store-listing-en.md"
     if field_sheet_resource in listing_content:
         field_sheet = visible_markdown(listing_content[field_sheet_resource])
         required_fields = ("Title", "Summary", "Description", "Category", "Language")
         for field in required_fields:
             if field not in field_sheet:
                 errors.append(f"{field_sheet_resource} must include {field!r}")
-        if "English" not in field_sheet:
-            errors.append(f"{field_sheet_resource} must select English")
+        language_name = STORE_LANGUAGES[language]
+        if language_name not in field_sheet:
+            errors.append(f"{field_sheet_resource} must select {language_name}")
         if TEMPLATE_PLACEHOLDER_PATTERN.search(field_sheet):
             errors.append(f"{field_sheet_resource} contains a template placeholder")
 

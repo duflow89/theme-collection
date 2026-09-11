@@ -28,9 +28,9 @@ Champagne browser chrome, a warm ivory toolbar, and a quiet atelier after dark
 
 [Install locally](brushbug-cozy-night/INSTALL.md) · [Chrome Web Store](https://chromewebstore.google.com/detail/brushbug-cozy-night/epiajojkoobbcdbhgppfpbjbheipfhbb)
 
-### [Mandu Blue Sky](mandu-blue-sky/README.md) · `v1.0.0`
+### [안경만두의 파란 하늘](mandu-blue-sky/README.md) · `v1.0.1`
 
-[![Mandu Blue Sky New Tab background](mandu-blue-sky/images/theme_ntp_background_fhd.png)](mandu-blue-sky/README.md)
+[![안경만두의 파란 하늘 New Tab background](mandu-blue-sky/images/theme_ntp_background_fhd.png)](mandu-blue-sky/README.md)
 
 A golden pixel-art dumpling with red glasses, rolling green hills, and a bright blue sky
 
@@ -72,13 +72,15 @@ Every current and future Chrome theme must meet the same documentation contract
 - Keep a theme-specific `INSTALL.md` beside the manifest
 - Link `INSTALL.md` from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
 - Document background alignment and Chrome's sizing limitations honestly
-- Keep all committed documentation and embedded image text in English
+- Keep documentation and embedded image text in English unless a theme-specific language exception is approved in `AGENTS.md`
 
 The Chrome validator enforces the preview and installation requirements
 
 ## Chrome Web Store listing standard
 
-Every theme keeps a complete English dashboard field sheet and listing copy under `listing/`. The field sheet records the title, summary, detailed description, category, and language selection
+Every theme keeps a complete dashboard field sheet and listing copy under `listing/`, in English by default. The user-approved `mandu-blue-sky` theme uses Korean. The field sheet records the title, summary, detailed description, category, and language selection
+
+Declare a non-default listing language in `listing/metadata.json`, for example `{"language": "ko"}`. The validator selects `summary-ko.txt`, `description-ko.md`, and `store-listing-ko.md` for Korean; themes without this metadata retain the existing English files. This repository-only setting does not change Chrome or dashboard language automatically
 
 Every theme also includes these upload-ready images under `store-assets/`
 

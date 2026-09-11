@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Mandu Blue Sky",
-  "version": "1.0.0",
-  "description": "A golden pixel-art dumpling with red glasses, blue skies, green hills, and a cloud-white toolbar",
+  "name": "안경만두의 파란 하늘",
+  "version": "1.0.1",
+  "description": "파란 하늘과 초록 언덕 위로 떠오른 안경만두의 원작 이미지를 담은 비공식 크롬 테마",
   "icons": {
     "128": "store-assets/store-icon-128.png"
   },

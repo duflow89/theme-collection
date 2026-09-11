@@ -12,8 +12,9 @@ These instructions apply to the entire repository. Platform or theme-specific do
 
 ## Language policy
 
-- Keep all repository files and committed content in English, including source code, comments, documentation, metadata, changelogs, marketplace copy, filenames, and text embedded in images
+- Keep all repository files and committed content in English by default, including source code, comments, documentation, metadata, changelogs, marketplace copy, filenames, and text embedded in images
 - Do not add translated variants or non-English localized content unless the user explicitly changes this repository policy
+- User-approved exception: `chrome/mandu-blue-sky` uses Korean for its public-facing package name, summary, listing copy, and store screenshots. Its display name may also appear in Korean in collection documentation and catalog metadata. Keep developer documentation and filenames in English
 - Communicate with the user in Korean unless the user explicitly requests another language
 
 ## Before changing files
@@ -39,7 +40,7 @@ These instructions apply to the entire repository. Platform or theme-specific do
 
 - Read `chrome/README.md` and the target theme README before editing
 - Start new Chrome theme packages from `templates/chrome-theme/`
-- Create a complete English Chrome Web Store listing with title, summary, detailed description, category, and language guidance under `listing/`
+- Create a complete Chrome Web Store listing with title, summary, detailed description, category, and language guidance under `listing/`. Use English by default and the approved language for a theme-specific exception; declare a non-default language in `listing/metadata.json`
 - Include the store-ready image set under `store-assets/`: a `128×128` icon, at least one `1280×800` screenshot, a `440×280` small promotional tile, and a `1400×560` marquee image
 - Keep a theme-specific `INSTALL.md` beside each Chrome manifest and link it from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
 - Embed the exact image referenced by `theme.images.theme_ntp_background` as a standalone Markdown image with alt text in the form `<Theme Name> New Tab background`
@@ -59,7 +60,7 @@ These instructions apply to the entire repository. Platform or theme-specific do
 
 - Run the narrowest relevant validator after each material change
 - After changing agent configuration, run `python3 tools/agents/validate_setup.py`
-- Before handoff, verify that tracked text and image assets contain no non-English localized copy
+- Before handoff, verify that non-English localized copy is limited to explicitly approved theme-specific exceptions
 - Before handoff, inspect `git diff --check`, `git status --short`, and the final diff
 - Report the exact commands run and whether they passed
 - Keep implementation completion separate from human rights review, marketplace submission, publication, or approval

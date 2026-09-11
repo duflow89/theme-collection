@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.1
+
+- Changed the package name and summary to Korean at the user's request
+- Replaced the English store listing with Korean copy and retained the original creator credits
+- Added Korean dashboard instructions and a full-browser store mockup with localized tabs and an address toolbar
+- Regenerated the store mockup for cleaner typography and replaced nearest-neighbor reduction with antialiased resampling for its mixed UI and artwork
+- Preserved the original page-only Chrome captures under source assets
+- Preserved the original background, icon, promotional illustrations, and browser colors
+
 ## 1.0.0
 
 - Created the initial Mandu Blue Sky Chrome theme

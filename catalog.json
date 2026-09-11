@@ -17,9 +17,9 @@
     {
       "app": "chrome",
       "id": "mandu-blue-sky",
-      "name": "Mandu Blue Sky",
+      "name": "안경만두의 파란 하늘",
       "path": "chrome/mandu-blue-sky",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }

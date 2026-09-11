@@ -25,7 +25,7 @@ Use this workflow for one independent theme under `<app>/<theme-id>/`.
 7. For Chrome, start new packages from `templates/chrome-theme/`
 8. For Chrome, embed the exact `theme.images.theme_ntp_background` runtime image as a standalone Markdown image with alt text in the form `<Theme Name> New Tab background`
 9. For Chrome, keep a theme-specific `INSTALL.md` beside the manifest and link it from the theme README with the standalone Markdown line `[Install locally](INSTALL.md)`
-10. For Chrome, prepare English listing guidance for the title, summary, detailed description, category, and language under `listing/`
+10. For Chrome, prepare listing guidance for the title, summary, detailed description, category, and language under `listing/`; use English by default and honor user-approved theme-specific language exceptions in `AGENTS.md`. Declare a non-default language in `listing/metadata.json` and use matching locale filenames
 11. For Chrome, include a `128×128` store icon, at least one `1280×800` screenshot, a `440×280` small promotional tile, and a `1400×560` marquee image under `store-assets/`
 
 ## 3. Synchronize release metadata
