@@ -2,12 +2,16 @@
 
 ## 1.0.1
 
+- Paired clear sky-blue frames and inactive tabs with a warm yellow active tab and toolbar, plus a light-yellow omnibox results background
+- Added deep-navy inactive-tab labels and deep-blue text and controls for readable contrast in focused and unfocused windows
+- Documented Chrome's neutral fill for the unfocused address field
+- Updated the full-browser store mockup and Korean listing to match the new palette
 - Changed the package name and summary to Korean at the user's request
 - Replaced the English store listing with Korean copy and retained the original creator credits
 - Added Korean dashboard instructions and a full-browser store mockup with localized tabs and an address toolbar
 - Regenerated the store mockup for cleaner typography and replaced nearest-neighbor reduction with antialiased resampling for its mixed UI and artwork
 - Preserved the original page-only Chrome captures under source assets
-- Preserved the original background, icon, promotional illustrations, and browser colors
+- Preserved the original New Tab background, placement, fallback color, icon, and promotional artwork
 
 ## 1.0.0
 

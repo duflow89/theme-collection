@@ -32,7 +32,7 @@ Champagne browser chrome, a warm ivory toolbar, and a quiet atelier after dark
 
 [![안경만두의 파란 하늘 New Tab background](mandu-blue-sky/images/theme_ntp_background_fhd.png)](mandu-blue-sky/README.md)
 
-A golden pixel-art dumpling with red glasses, rolling green hills, and a bright blue sky
+A golden pixel-art dumpling with red glasses, rolling green hills, clear sky-blue tabs, and a vivid yellow toolbar
 
 [Install locally](mandu-blue-sky/INSTALL.md)
 

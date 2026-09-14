@@ -12,10 +12,10 @@
 
 상세 설명 파일은 대시보드에 바로 붙여넣을 수 있는 일반 텍스트 형식이며, 원작자와 두 출처 링크를 포함
 
-## 기존 초안을 한국어로 변경
+## 기존 초안에 새 배색 반영
 
 1. 기존 `Mandu Blue Sky` 초안의 **패키지** 메뉴에서 `mandu-blue-sky-v1.0.1.zip` 업로드
-2. 패키지 제목이 `안경만두의 파란 하늘`로, 요약이 한국어로 바뀌었는지 확인
+2. 패키지 버전이 `1.0.1`인지, 제목과 요약이 한국어로 유지되는지 확인
 3. **스토어 등록정보**의 **설명** 칸에 [description-ko.md](description-ko.md) 전체 내용 입력
 4. **언어**에서 **한국어** 선택
 5. 아래 이미지 업로드 후 **임시저장**
@@ -27,7 +27,7 @@ ZIP 업로드로 제목과 요약을 반영할 수 있으나, 상세 설명·카
 | 대시보드 항목 | 파일 | 규격 |
 | --- | --- | --- |
 | 스토어 아이콘 | [store-icon-128.png](../store-assets/store-icon-128.png) | `128×128` PNG |
-| 스크린샷 | [screenshot-1280x800.png](../store-assets/screenshot-1280x800.png) | 탭·주소창이 포함된 한국어 전체 브라우저 목업, `1280×800` RGB PNG |
+| 스크린샷 | [screenshot-1280x800.png](../store-assets/screenshot-1280x800.png) | 맑은 하늘색 탭 줄과 노란색 활성 탭·도구 모음이 포함된 한국어 전체 브라우저 목업, `1280×800` RGB PNG |
 | 작은 프로모션 이미지 | [promo-small-440x280.png](../store-assets/promo-small-440x280.png) | `440×280` RGB PNG |
 | 마키 프로모션 이미지 | [promo-marquee-1400x560.png](../store-assets/promo-marquee-1400x560.png) | 선택 항목, `1400×560` RGB PNG |
 

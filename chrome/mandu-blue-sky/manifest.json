@@ -12,64 +12,64 @@
     },
     "colors": {
       "frame": [
-        116,
-        181,
-        235
+        131,
+        199,
+        230
       ],
       "frame_inactive": [
-        169,
-        204,
-        232
+        162,
+        213,
+        236
       ],
       "background_tab": [
-        149,
+        131,
         199,
-        239
+        230
       ],
       "background_tab_inactive": [
-        185,
-        214,
-        237
+        162,
+        213,
+        236
       ],
       "toolbar": [
-        244,
-        249,
-        253
+        255,
+        216,
+        77
       ],
       "toolbar_text": [
-        25,
-        49,
-        71
+        18,
+        53,
+        107
       ],
       "toolbar_button_icon": [
-        44,
-        80,
-        110
+        22,
+        71,
+        156
       ],
       "omnibox_background": [
-        224,
-        237,
-        248
+        255,
+        243,
+        176
       ],
       "omnibox_text": [
-        25,
-        49,
-        71
+        18,
+        53,
+        107
       ],
       "tab_text": [
-        25,
-        49,
-        71
+        18,
+        53,
+        107
       ],
       "tab_background_text": [
-        24,
-        50,
-        72
+        18,
+        53,
+        107
       ],
       "bookmark_text": [
-        44,
-        80,
-        110
+        18,
+        53,
+        107
       ],
       "ntp_background": [
         117,
@@ -87,9 +87,14 @@
         255
       ],
       "button_background": [
-        195,
-        222,
-        244
+        255,
+        231,
+        128
+      ],
+      "tab_background_text_inactive": [
+        18,
+        53,
+        107
       ]
     },
     "properties": {

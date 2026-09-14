@@ -32,24 +32,38 @@ The creator attribution and links were supplied by the user. The browser theme p
 | Listing language | Korean (`ko`), as requested by the user |
 | Background | `1920×1080` RGBA PNG |
 | Placement | Top right · no repeat · native image size |
-| Palette | Sky-blue frames · cloud-white toolbar · deep-blue controls |
+| Palette | Clear sky-blue frames · vivid yellow toolbar · deep-blue controls |
 | Access | No scripts, permissions, tracking, or data collection |
 | Availability | Source package; no Chrome Web Store release |
 
 ## Experience
 
 - The original blue-sky and green-hill artwork, with the giant golden character wearing red glasses
-- Soft blue inactive tabs and a cloud-white active tab and toolbar
-- A pale-blue address bar with dark, readable text and controls
+- Clear sky-blue inactive tabs with deep-navy labels, paired with a warm yellow active tab and toolbar
+- Deep-blue address text and controls, with a light-yellow omnibox results background
 - Top-right alignment to keep the character visible on common desktop windows
 
 Chrome does not scale theme backgrounds to fit the window. Narrow or short windows can crop the artwork; windows larger than the image reveal the sky-blue fallback color. The manifest supports alignment and repetition, but no CSS `cover` or `contain` sizing. Display scale and browser zoom can also affect the visible area
+
+### Browser palette
+
+| Surface | Color |
+| --- | --- |
+| Focused frame and inactive tabs | Clear sky blue `#83C7E6` |
+| Unfocused frame and inactive tabs | Pale sky blue `#A2D5EC` |
+| Active tab and toolbar | Golden yellow `#FFD84D` |
+| Omnibox results background | Light yellow `#FFF3B0` |
+| Inactive-tab labels | Deep navy `#12356B` |
+| Active-tab, address, and bookmark text | Deep navy `#12356B` |
+| Toolbar icons | Deep blue `#16479C` |
+
+The active tab follows Chrome's toolbar color. In current Chromium, `omnibox_background` maps to the results background; the unfocused address field can use Chrome's neutral fill instead. The mockup uses light gray for that field and illustrates the palette rather than every browser state. See the [theme color mapping](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/chrome/browser/themes/browser_theme_pack.cc) and [omnibox color rules](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/chrome/browser/ui/color/omnibox_color_mixer.cc)
 
 ## Chrome Web Store assets
 
 ![안경만두의 파란 하늘 full-browser mockup](store-assets/screenshot-1280x800.png)
 
-The store screenshot is a generated full-browser mockup showing the sky-blue tab strip, cloud-white toolbar, pale-blue address bar, and Korean New Tab interface. It illustrates the theme's appearance; the original page-only captures remain in `assets/source/`
+The store screenshot is a generated full-browser mockup showing the clear sky-blue tab strip, warm yellow active tab and toolbar, neutral address field, and Korean New Tab interface. It illustrates the theme's appearance; the previous mockups and original page-only captures remain in `assets/source/`
 
 | Asset | Preview |
 | --- | --- |
@@ -60,7 +74,7 @@ The [dashboard field sheet](listing/store-listing-ko.md) includes Korean listing
 
 ## Korean store listing
 
-Use version `1.0.1` to update the package name and summary in the existing dashboard draft. Paste [the Korean description](listing/description-ko.md) into the description field and select **Korean** as the listing language. The ZIP does not fill these dashboard fields automatically
+When preparing a store update, use version `1.0.1` for the blue-and-yellow browser palette. Paste [the Korean description](listing/description-ko.md) into the description field, select **Korean** as the listing language, and replace the screenshot with the matching mockup. The ZIP does not fill these dashboard fields automatically
 
 The mockup uses Korean browser labels. Chrome controls use the browser's language settings; installing this theme does not change the browser language
 

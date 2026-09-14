@@ -45,18 +45,41 @@ Use case: precise-object-edit. Asset type: Chrome Web Store small promotional ti
 Use case: precise-object-edit. Asset type: Chrome Web Store marquee image, very wide 5:2 landscape. Reframe the supplied artwork as one full-bleed panoramic promotional illustration. Preserve the scene and exact character identity: a vivid photographic blue sky with white clouds, a rolling sunlit green grass hill across the lower quarter, and exactly one huge golden pixel-art dumpling rising from behind the hill in the right half. Preserve its red rectangular glasses, black shiny eyes, tiny neutral mouth, three golden tufts, shading and hard stepped pixel edges. Show the entire head with sky margins above and beside it. Stretch the landscape composition horizontally, never stretch the character anatomy. Keep the left half as the same expansive blue sky and green hill. Match the mixture of photographic landscape and pixel art from the original. No text, no letters, no logos, no UI, no badges, no watermarks, no frames, square corners. Target 2800x1120 pixels, strict 5:2 aspect ratio for export to 1400x560.
 ```
 
-## Full-browser store mockup
+## Current clear-sky-blue-and-yellow browser mockup
+
+- Created on 2026-09-14 with the built-in image generation tool for version `1.0.1`
+- Selected candidate: A, Clear Sky, confirmed by the user with the attached preview
+- Selected generated source: `browser-mockup-clear-sky-yellow-ko-source.png` (`1586×992`, RGB PNG without alpha), copied unchanged from the user's attachment
+- Candidate edit input: the soft sky-blue store mockup derived from `browser-mockup-sky-yellow-ko-source.png`
+- Preserved cobalt-blue draft: `browser-mockup-blue-yellow-ko-source.png`, with its original prompt in `browser-mockup-blue-yellow-ko-prompt.txt`
+- Preserved soft sky-blue draft: `browser-mockup-sky-yellow-ko-source.png`, with its production prompts in `browser-mockup-sky-yellow-ko-prompt.txt`
+- Final edit: change the tab strip to clear sky blue and inactive-tab labels to deep navy; the prompt is in `browser-mockup-clear-sky-yellow-ko-prompt.txt`
+- Store export: `../../store-assets/screenshot-1280x800.png` (`1280×800`, RGB PNG without alpha)
+- The edit changes the illustrated browser chrome to clear sky blue `#83C7E6`, golden yellow `#FFD84D`, and deep-blue controls, while retaining the reference's New Tab composition
+- The final manifest uses deep-navy `#12356B` inactive-tab labels for a measured `6.45:1` contrast against `#83C7E6`; the unfocused frame uses pale sky blue `#A2D5EC`
+- This is a generated visual illustration, not an installed-browser capture or an exact rendering of every manifest color and browser state
+- Export: center crop one row to `1586×991`, then resample to `1280×800` with macOS `sips`; retain RGB without alpha
+- Resampling exception: the browser mockup uses antialiased reduction for readable UI typography; source and runtime artwork are unchanged
+- The original background, icon, promotional artwork, and previous generated sources are preserved
+
+```bash
+sips --cropToHeightWidth 991 1586 browser-mockup-clear-sky-yellow-ko-source.png \
+  --out ../../store-assets/screenshot-1280x800.png
+sips --resampleHeightWidth 800 1280 ../../store-assets/screenshot-1280x800.png
+```
+
+## Archived sky-blue browser mockups
 
 - Created on 2026-09-11 with the built-in image generation tool
-- Current generated source: `browser-mockup-sky-blue-ko-v2-source.png` (`1586×992`, RGB PNG)
+- Version `1.0.1` generated source: `browser-mockup-sky-blue-ko-v2-source.png` (`1586×992`, RGB PNG)
 - Preserved first generated source: `browser-mockup-sky-blue-ko-source.png` (`1586×992`, RGB PNG)
 - Exact-size derivative: `browser-mockup-sky-blue-ko-1280x800.png`
-- Store export: `../../store-assets/screenshot-1280x800.png`, identical to the exact-size derivative
+- Previous store export: identical to the preserved exact-size derivative, replaced by the blue-and-yellow mockup in version `1.0.1`
 - First-generation inputs, in order: the existing Brushbug full-browser mockup for window framing only; `new-tab-capture-ko-1280x800.png` for Korean New Tab appearance; `mandu-blue-sky-original.png` for background and character fidelity
 - Regeneration inputs: the previous full-browser export for layout and colors, and `mandu-blue-sky-original.png` for background and character fidelity. The UI was regenerated to improve typography and curves
 - Browser reference: [Brushbug full-browser mockup](../../../brushbug-cozy-night/assets/source/browser-mockup-ivory-champagne-1280x800.png)
 - The mockup includes a sky-blue tab strip, cloud-white navigation toolbar, pale-blue omnibox, window controls, and Korean interface labels
-- Current export: center crop to 8:5 and resize to `1280×800` using Lanczos3 resampling, then ensure 8-bit RGB PNG without alpha (24-bit total)
+- Version `1.0.1` export: center crop to 8:5 and resize to `1280×800` using Lanczos3 resampling, then ensure 8-bit RGB PNG without alpha (24-bit total)
 - Resampling exception: this mixed-content browser mockup uses antialiased Lanczos3 reduction to keep text, icons, and photographic details smooth. Nearest-neighbor reduction of the first mockup introduced jagged UI curves. The character keeps its deliberate stepped geometry, and original/runtime pixel-art files are unchanged
 - The regeneration prompt requested `2560×1600`; the built-in tool returned `1586×992`. The recorded source dimensions describe the actual output, not the requested size
 - This is a generated visual illustration, not an exact installed-browser capture. Its composition can differ from the runtime crop at a particular viewport
